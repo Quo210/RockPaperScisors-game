@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scisors Game</title>
+</head>
+<body>
+    <script>
+
+    const gameArray = ['Rock','Paper','Scissors'];
+    const rock = gameArray[0];
+    const paper = gameArray[1];
+    const scissors = gameArray[2];
+    let result;
+    let playerVictoryCounter = 0;
+    let computerVictoryCounter = 0;
+    let DrawOrMissCounter = 0;
+
+
+        function computerPlay() {
+            let numbGen = Math.floor(Math.random()*gameArray.length);
+            return gameArray[numbGen];
+        }
+
+        function playOneRound(playerSelection,computerSelection) {
+
+            
+            let player = playerSelection.toLowerCase()
+            let victorySentence = 'You beat the computer, ' + player + ' beats ' + computerSelection;
+            let defeatSentence = 'You have been defeated, ' + playerSelection + ' loses to ' + computerSelection;
+            let drawSentence = 'You both have used the same. Draw!';
+            let missSpell = 'Scissors is a word with two (2) S\'s :) You might want to try that version.';
+            let outOfRules = 'You seem to have entered something that was not in the game\'s rules!';
+             
+
+            switch(playerSelection.toLowerCase()) {
+                case 'rock':
+                if (computerSelection == scissors) {
+                        console.log('Player Victory')
+                        playerVictoryCounter++;
+                        return victorySentence;
+                    } else if (computerSelection == paper) {
+                        console.log("Computer Victory");
+                        computerVictoryCounter++;
+                        return defeatSentence
+                    } else {
+                        console.log("Draw");
+                        DrawOrMissCounter++;
+                        return drawSentence
+                    }                
+                break;
+                case 'paper':
+                    if (computerSelection == rock) {
+                        console.log('Player Victory')
+                        playerVictoryCounter++;
+                        return victorySentence;
+                    } else if (computerSelection == scissors) {
+                        console.log("Computer Victory");
+                        computerVictoryCounter++;
+                        return defeatSentence
+                    } else {
+                        console.log("Draw");
+                        DrawOrMissCounter++;
+                        return drawSentence
+                    }
+                break;
+                case 'scissor':
+                case 'scissors': 
+                    if (computerSelection == paper) {
+                        console.log('Player Victory')
+                        playerVictoryCounter++;
+                        return victorySentence
+                    } else if (computerSelection == rock) {
+                        console.log("Computer Victory");
+                        computerVictoryCounter++;
+                        return defeatSentence
+                    } else {
+                        console.log("Draw");
+                        DrawOrMissCounter++;
+                        return drawSentence
+                    }
+                break;
+                case 'scisors': 
+                console.log("Draw");
+                DrawOrMissCounter++;
+                 return missSpell
+                 break; 
+                default:
+                    {   console.log("Draw");
+                        DrawOrMissCounter++;
+                        return outOfRules }
+            }
+
+        }
+    
+        function fullGame() {
+            for (counter = 0; counter < 5; counter++) {
+                
+                let playerInput = prompt("To play enter rock, paper or scissors (don't mind capslock but yes the spelling","");
+                let rolePlaySentence = playOneRound(playerInput,computerPlay());
+                console.log(rolePlaySentence)
+
+            } 
+
+            let gameVictor = ['Player','Computer','Lady Luck'];
+            let victorArrSelector;
+            let victorScore;
+            let isDraw = false;
+            let announcerFinal;
+
+            if (playerVictoryCounter > computerVictoryCounter && playerVictoryCounter > DrawOrMissCounter) {
+                victorArrSelector = 0;
+                victorScore = playerVictoryCounter;
+            } else if (computerVictoryCounter > playerVictoryCounter && computerVictoryCounter > DrawOrMissCounter) {
+                victorArrSelector = 1;
+                victorScore = computerVictoryCounter;
+            } else if (playerVictoryCounter == computerVictoryCounter || playerVictoryCounter == DrawOrMissCounter || computerVictoryCounter == DrawOrMissCounter && !(DrawOrMissCounter < playerVictoryCounter)) {
+               isDraw = true; 
+            }
+            else {
+                victorArrSelector = 2;
+                victorScore = DrawOrMissCounter;
+            }
+
+            if (isDraw == true) {
+                announcerFinal = 'There was a draw and thus no final victor, the scores were: Player: ' + playerVictoryCounter + ", Computer: " + computerVictoryCounter + ", Luck (draw): " + DrawOrMissCounter + ".";
+            } else {
+                announcerFinal = 'The Final victor of the game is ' + gameVictor[victorArrSelector] + ' with a final counter of: ' + victorScore + "/" + counter;
+            }
+
+            return announcerFinal
+        }
+
+        function resetGame() {
+            playerVictoryCounter = 0;
+            computerVictoryCounter = 0;
+            DrawOrMissCounter = 0;
+            isDraw = false;
+            return 'All values have been reset!'
+        }
+
+    </script>
+</body>
+</html>
