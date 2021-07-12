@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 // Initial Variable declarations 
 const gameArray = ['Rock','Paper','Scissors'];
 const rock = gameArray[0];
