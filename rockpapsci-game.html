@@ -9,15 +9,15 @@
 </head>
 <body>
     <div id="header">
-        <h1 id="title">Rock, Paper and Scissors <span id="death">DEATHMATCH</span></h1>
+        <h1 id="title">Rock, Paper and Scissors</h1>
     </div>
 
     <div id="main">
 
         <div id="arena">
-            <div id="player" class="insideArena"><img src="images/play-rock.jpg" alt="Rock!" class="imgInArena"></div>
-            <div id="versus" class="insideArena"><img src="images/versus.jpg" alt="Vs." class="imgInArena"></div>
-            <div id="computer" class="insideArena"><img src="images/comp-sci.jpg" alt="Scissors!" class="imgInArena"></div>
+            <div id="player" class="insideArena"><img src="images/play-rock.jpg" alt="Rock" class="imgInArena"></div>
+            <div id="versus" class="insideArena"><img src="images/versus.jpg" alt="Versus" class="imgInArena"></div>
+            <div id="computer" class="insideArena"><img src="images/comp-sci.jpg" alt="Scissors" class="imgInArena"></div>
         </div>
         
         <div id="buttons" class="lowerhalf">
@@ -34,16 +34,20 @@
                 Paper bears rock and loses to scissors. <br>
                 The first player to reach 5 victories will be declared winner! <br>
                 <br> <br>
-                <h4>Current counter is: </h4> <br> <br>
                 <span><i>May luck be always on your side.</i></span>
+                <br> <br>
             </p>
+            <h4 class="reset">If you wish to reset the game click here: </h4> <button class="reset">Reset the Game</button>
         </div>
 
         <!-- <div id="signature" class="lowerhalf">Made by Quo210</div> -->
     </div>
 
-
-
+    <audio src="sounds/win.wav" id="winSound"></audio>
+    <audio src="sounds/lose.wav" id="loseSound"></audio>
+    <audio src="sounds/draw.wav" id="drawSound"></audio>
+    <audio src="sounds/final-victory.wav" id="Victory"></audio>
+    <audio src="sounds/defeat.ogg" id="Defeat"></audio>
 
     <script src="myScripts.js">
     </script>
